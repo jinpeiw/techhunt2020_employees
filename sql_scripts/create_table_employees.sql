@@ -1,0 +1,1 @@
+create table govtech_employees (id nvarchar(255) not null primary key, login nvarchar(255) not null unique, name nvarchar(255) not null, salary double not null);
