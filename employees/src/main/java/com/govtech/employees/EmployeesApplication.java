@@ -1,3 +1,6 @@
+/**
+ * Author: Wong Jin Pei
+ */
 package com.govtech.employees;
 
 import org.springframework.boot.SpringApplication;
@@ -25,7 +28,7 @@ public class EmployeesApplication {
 	@Bean
 	public Docket api() {
 		return new Docket(DocumentationType.SWAGGER_2).select()
-				.apis(RequestHandlerSelectors.basePackage("com.govtech_employees.controller"))
+				.apis(RequestHandlerSelectors.basePackage("com.govtech.employees.controller"))
 				.paths(PathSelectors.any()).build();
 	}
 }

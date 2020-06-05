@@ -1,3 +1,7 @@
+/**
+ * Author: Wong Jin Pei
+ * This is an controller class to contain services for user story #1 and #2
+ */
 package com.govtech.employees.controller;
 
 import java.io.IOException;
@@ -23,8 +27,19 @@ public class EmployeesController {
 	@Autowired
 	EmployeesService employeesService;
 
+	/**
+	 * Get list of employees with GET /users
+	 * 
+	 * @param minSalary
+	 * @param maxSalary
+	 * @param offset
+	 * @param limit
+	 * @param sort
+	 * @return
+	 * @throws InvalidInputException
+	 */
 	@RequestMapping(value = "/users", method = RequestMethod.GET)
-	public Results testController(@RequestParam(name = "minSalary") Double minSalary,
+	public Results getEmployeesDashboard(@RequestParam(name = "minSalary") Double minSalary,
 			@RequestParam(name = "maxSalary") Double maxSalary, @RequestParam(name = "offset") Integer offset,
 			@RequestParam(name = "limit") Integer limit, @RequestParam(name = "sort") String sort)
 			throws InvalidInputException {
@@ -38,6 +53,15 @@ public class EmployeesController {
 
 	}
 
+	/**
+	 * Upload CSV file with POST /users/upload
+	 * 
+	 * @param file
+	 * @return
+	 * @throws IOException
+	 * @throws InvalidInputException
+	 * @throws IllegalArgumentException
+	 */
 	@RequestMapping(value = "/users/upload", method = RequestMethod.POST)
 	public ResponseEntity<UploadResponse> processUpload(@RequestParam MultipartFile file)
 			throws IOException, InvalidInputException, IllegalArgumentException {

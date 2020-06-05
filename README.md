@@ -40,10 +40,16 @@ What is included in this repository:
 2. MySQL database (Open sourced)
 
 ## APIs Catalogue
+> Swagger UI: http://localhost:8080/swagger-ui.html#/
+
 | S/N | API | Functionality |
 |--------|-------------|-----------|
 | 1 | POST /users/upload | To upload a CSV file for employees's details |
 | 2 | GET /users | To get a list of employees' details |
+| 3 | GET /users/{id} | To get individual employee's details (User Story #3) |
+| 4 | POST /users/{id} | To create employee's details (User Story #3) |
+| 5 | DELETE /users/{id} | to delete employee's details based on id (User Story #3) |
+| 6 | PATCH /users/{id} | To update employee's details based on id (User Story #3) | 
 
 ### <ins>User Story #1 HTTP POST /users/upload</ins>
 #### Request
@@ -116,7 +122,7 @@ Response
 ### <ins>User Story #2 HTTP GET /users</ins>
 #### Request
 
-Headers - Content-Type: multipart/form-data
+Headers - 
 Parameters - 
 | Field name | Data type | Description |
 |--------|-------------|-----------|
@@ -136,6 +142,9 @@ Parameters -
 | results.salary | number | Salary of the employee | 
 
 #### Sample Request and Response 
+Request
+> http://localhost:8080/users?minSalary=0&maxSalary=1000.55&offset=0&limit=30&sort=-login
+
 Response 
 ```
 #1 HTTP STATUS 200 OK
@@ -173,6 +182,185 @@ Response
 
 ```
 
+### <ins>User Story #3 HTTP GET /users/{id}</ins>
+#### Request
+
+Headers - 
+Parameters - 
+| Field name | Data type | Description |
+|--------|-------------|-----------|
+| id | String |  Employee's ID | 
+
+#### Response
+| Field name | Data type | Description |
+|--------|-------------|-----------|
+| id | String | Id of the employee |
+| name | String | Name of the employee |
+| login | String  | Login of the employee |
+| salary | number | Salary of the employee | 
+
+#### Sample Request and Response 
+Request
+> http://localhost:8080/users/e0008
+
+Response 
+```
+#1 HTTP STATUS 200 OK
+{
+    "id": "e0008",
+    "login": "adumbledore",
+    "name": "Albus Dumbledore",
+    "salary": 34.23
+}
+
+```
+
+### <ins>User Story #3 HTTP POST /users/{id}</ins>
+#### Request
+
+Headers - Content-Type:  application/json
+Parameters - 
+| Field name | Data type | Description |
+|--------|-------------|-----------|
+| id | String |  Employee's ID |
+| login | String | Employee's Login |
+| name | String | Employee's name | 
+| salary | String | Employee's salary | 
+
+#### Response
+| Field name | Data type | Description |
+|--------|-------------|-----------|
+| id | String | Id of the employee |
+| name | String | Name of the employee |
+| login | String  | Login of the employee |
+| salary | number | Salary of the employee | 
+
+#### Sample Request and Response 
+Request
+> http://localhost:8080/users/t00081
+```
+{
+    "id": "t00081",
+    "login": "asdasd",
+    "name": "asdasd",
+    "salary": 34.23
+}
+```
+
+Response 
+```
+#1 HTTP STATUS 200 OK
+{
+    "id": "t00081",
+    "login": "asdasd",
+    "name": "asdasd",
+    "salary": 34.23
+}
+
+#2 HTTP STATUS 400 Bad Request 
+{
+    "timestamp": "2020-06-05T03:39:05.099+0000",
+    "status": 400,
+    "error": "Invalid Input Exception",
+    "message": "Error creating employees details, ID already exists: t00081",
+    "path": "/users/t00081"
+}
+
+```
+
+### <ins>User Story #3 HTTP DELETE /users/{id}</ins>
+#### Request
+
+Headers - Content-Type:  application/json
+Parameters - 
+| Field name | Data type | Description |
+|--------|-------------|-----------|
+| id | String |  Employee's ID |
+
+#### Response
+| Field name | Data type | Description |
+|--------|-------------|-----------|
+| timestamp | timestamp | Current timestamp |
+| status | String | Status of deletion |
+| message | String  | Success message |
+
+#### Sample Request and Response 
+Request
+> http://localhost:8080/users/t0001
+
+Response 
+```
+#1 HTTP STATUS 200 OK
+{
+    "timestamp": "2020-06-05T05:19:57.812+0000",
+    "status": "SUCCESS",
+    "message": "Success delete employee: t0001"
+}
+
+#2 HTTP STATUS 400 Bad Request 
+{
+    "timestamp": "2020-06-05T05:15:46.525+0000",
+    "status": 400,
+    "error": "Invalid Input Exception",
+    "message": "Error deleting employees details, ID does not exist: t0002",
+    "path": "/users/t0002"
+}
+
+```
+
+### <ins>User Story #3 HTTP PATCH /users/{id}</ins>
+#### Request
+
+Headers - Content-Type:  application/json
+Parameters - 
+| Field name | Data type | Description |
+|--------|-------------|-----------|
+| id | String |  Employee's ID |
+| login | String | Employee's Login |
+| name | String | Employee's name | 
+| salary | String | Employee's salary | 
+
+#### Response
+| Field name | Data type | Description |
+|--------|-------------|-----------|
+| id | String | Id of the employee |
+| name | String | Name of the employee |
+| login | String  | Login of the employee |
+| salary | number | Salary of the employee | 
+
+#### Sample Request and Response 
+Request
+> http://localhost:8080/users/t00081
+```
+{
+    "id": "t00081",
+    "login": "asdasda",
+    "name": "asdasda",
+    "salary": 34.23
+}
+```
+
+Response 
+```
+#1 HTTP STATUS 200 OK
+{
+    "id": "t00081",
+    "login": "asdasda",
+    "name": "asdasda",
+    "salary": 34.23
+}
+
+#2 HTTP STATUS 400 Bad Request 
+{
+    "timestamp": "2020-06-05T05:36:44.194+0000",
+    "status": 400,
+    "error": "Invalid Input Exception",
+    "message": "Error updating employees details, ID does not exist: t000812",
+    "path": "/users/t00081"
+}
+
+```
+
 ### Custom Exception Handling w/ Spring's Controller Advice 
 #### InvalidInputException - extends Runtime Exception 
 * Returning HTTP Status code 400 Bad request 
@@ -187,7 +375,7 @@ Example of exception's response:
 }
 ```
 
-### Database Schema
+## Database Schema
 As the requirement provided in the scope is simple and straightforward, the following basic schema is created to fulfil the requirement 
 
 | column | type | nullable | 

@@ -1,3 +1,7 @@
+/**
+ * Author: Wong Jin Pei
+ * This is an entity to contain upload response
+ */
 package com.govtech.employees.responses;
 
 import java.util.List;

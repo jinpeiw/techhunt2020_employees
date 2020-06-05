@@ -1,3 +1,7 @@
+/**
+ * Author: Wong Jin Pei
+ * This is an entity to contain employee table 
+ */
 package com.govtech.employees.model;
 
 import javax.persistence.Entity;

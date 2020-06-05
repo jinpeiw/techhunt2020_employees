@@ -1,3 +1,7 @@
+/**
+ * Author: Wong Jin Pei
+ * This is an entity to contain duplicate login response
+ */
 package com.govtech.employees.responses;
 
 import org.springframework.stereotype.Component;

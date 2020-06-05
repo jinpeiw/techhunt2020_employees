@@ -1,3 +1,7 @@
+/**
+ * Author: Wong Jin Pei
+ * This is a custom exception to handle invalid input
+ */
 package com.govtech.employees.exception;
 
 import org.springframework.http.HttpStatus;

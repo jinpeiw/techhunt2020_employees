@@ -1,3 +1,7 @@
+/**
+ * Author: Wong Jin Pei
+ * This is an dao for employees
+ */
 package com.govtech.employees.dao;
 
 import java.util.List;
@@ -28,5 +32,11 @@ public interface EmployeesRepository extends CrudRepository<Employees, Long> {
 	@Query(value = "replace into govtech_employees values (:id ,:login,:name, :salary)", nativeQuery = true)
 	void insertCsvData(@Param("id") String id, @Param("login") String login, @Param("name") String name,
 			@Param("salary") double salary);
+
+	Employees findById(String id);
+
+	@Modifying(clearAutomatically = true)
+	@Transactional
+	void deleteById(String id);
 
 }

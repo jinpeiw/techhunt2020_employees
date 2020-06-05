@@ -1,3 +1,7 @@
+/**
+ * Author: Wong Jin Pei
+ * This class contains business login for employees services for User story #1 and #2
+ */
 package com.govtech.employees.services;
 
 import java.io.BufferedReader;
@@ -31,6 +35,17 @@ public class EmployeesService {
 	@Autowired
 	EmployeesRepository employeesRepository;
 
+	/**
+	 * Get list of employees for employees dashboard
+	 * 
+	 * @param minSalary
+	 * @param maxSalary
+	 * @param offset
+	 * @param limit
+	 * @param sort
+	 * @return
+	 * @throws InvalidInputException
+	 */
 	public List<Employees> getEmployeesDashboard(Double minSalary, Double maxSalary, Integer offset, Integer limit,
 			String sort) throws InvalidInputException {
 
@@ -69,6 +84,15 @@ public class EmployeesService {
 
 	}
 
+	/**
+	 * Save data in CSV file to database 
+	 * 
+	 * @param file
+	 * @return
+	 * @throws IOException
+	 * @throws InvalidInputException
+	 * @throws IllegalArgumentException
+	 */
 	public ResponseEntity<UploadResponse> saveCsvData(MultipartFile file)
 			throws IOException, InvalidInputException, IllegalArgumentException {
 
@@ -111,9 +135,9 @@ public class EmployeesService {
 			String userId = values[0];
 			String login = values[1];
 
-			if (tempSalary < 0) {
+			if (tempSalary < 0 || tempSalary > 4000) {
 				DuplicateLoginResponse failRes = new DuplicateLoginResponse(userId,
-						"Salary entered for " + userId + " is below $0.");
+						"Salary entered for " + userId + " is invalid: " + tempSalary);
 				failIds.add(failRes);
 
 			} else {

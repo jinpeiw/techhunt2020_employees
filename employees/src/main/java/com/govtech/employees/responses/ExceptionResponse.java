@@ -1,3 +1,7 @@
+/**
+ * Author: Wong Jin Pei
+ * This is an entity to contain exception response
+ */
 package com.govtech.employees.responses;
 
 import java.sql.Timestamp;

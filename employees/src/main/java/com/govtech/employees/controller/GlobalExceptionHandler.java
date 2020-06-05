@@ -1,3 +1,7 @@
+/**
+ * Author: Wong Jin Pei
+ * This is an controller advice to handle exceptions
+ */
 package com.govtech.employees.controller;
 
 import java.sql.Timestamp;
@@ -16,6 +20,13 @@ import com.govtech.employees.responses.ExceptionResponse;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
+	/**
+	 * Handle Invalid Input Exception 
+	 * 
+	 * @param ex
+	 * @param request
+	 * @return
+	 */
 	@ExceptionHandler(InvalidInputException.class)
 	@ResponseBody
 	public ResponseEntity<ExceptionResponse> handleInvalidInputException(InvalidInputException ex,

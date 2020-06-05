@@ -1,3 +1,7 @@
+/**
+ * Author: Wong Jin Pei 
+ * This class Offset based page request (paging and sorting) for JPA
+ */
 package com.govtech.employees.utils;
 
 import java.io.Serializable;
