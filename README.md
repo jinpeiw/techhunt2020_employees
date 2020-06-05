@@ -395,5 +395,5 @@ npm i -g serve
 serve
 ```
 
-![Screen Capture of static web page](https://github.com/jinpeiw/techhunt2020_employees/Screen_Capture.jpg?raw=true)
+![Screen Capture of static web page](https://github.com/jinpeiw/techhunt2020_employees/blob/master/Screen_Capture.JPG?raw=true)
 
