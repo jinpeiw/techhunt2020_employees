@@ -36,7 +36,7 @@ java -jar employees-0.0.1-SNAPSHOT.jar
 ## Scope
 This repository contains source codes that should be assessed for TechHunt 2020 Take Home Assessment, attempting on User Story #1 and User Story #2 requirements. 
 What is included in this repository: 
-1. 2 APIs (Using Spring Boot framework), connecting to
+1. 6 APIs (Using Spring Boot framework), connecting to
 2. MySQL database (Open sourced)
 
 ## APIs Catalogue
