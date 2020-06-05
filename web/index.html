@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <title>HR Employee Portal</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="styles/main.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script src="script/apicall.js"></script>
+    </head>
+    <body>
+        <div class="sidebar">
+            <div class="user">
+                <img src="img/img_avatar.png" alt="Avatar">
+                <p>User Name</p>
+            </div>
+            <a class="active" href="#home">Upload CSV</a>
+        </div>
+
+        <div class="content">
+            <div class="container">
+                <h3>Employees</h3>
+                <ul class="responsive-table">
+                    <li class="table-header">
+                        <div class="col col-1">Id</div>
+                        <div class="col col-2">Name</div>
+                        <div class="col col-3">Login</div>
+                        <div class="col col-4">Salary</div>
+                        <div class="col col-5">Action</div>
+                    </li>
+                    <li class="table-row">
+                        <div class="col col-1" data-label="Id">42235</div>
+                        <div class="col col-2" data-label="Name">John Doe</div>
+                        <div class="col col-3" data-label="Login">$350</div>
+                        <div class="col col-4" data-label="Salary">Pending</div>
+                        <div class="col col-5" data-label="Action"><i class="material-icons">edit</i> <i class="material-icons">delete</i></div>
+                    </li>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="pagination">
+                <a href="#">&laquo;</a>
+                <a href="#">1</a>
+                <a class="active" href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#">5</a>
+                <a href="#">6</a>
+                <a href="#">&raquo;</a>
+            </div>
+        </div>
+    </body>
+</html>

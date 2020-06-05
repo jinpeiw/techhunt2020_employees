@@ -7,6 +7,8 @@ This is a simple introduction to compiling Spring Boot Application and MySQL's s
 * Apache Maven 3.6 or later
 * JDK 1.8 or later
 * MySQL 5.6 or later
+* NPM 
+* NodeJS
 
 #### <ins>Folder structure:</ins>
 | Folder | Description |
@@ -14,6 +16,7 @@ This is a simple introduction to compiling Spring Boot Application and MySQL's s
 | employees | Contains source codes of the Spring Boot application for APIs call |
 | sql_scripts | Contains SQL Scripts to run to import schemas |
 | sample_CSV | Contains sample CSV files for testing purposes | 
+| web | Contains static web source code (Incomplete) |
 
 #### <ins>Compiling Spring Boot Application:</ins> 
 * Download and unzip the source repository, or clone it using Git: 
@@ -384,3 +387,13 @@ As the requirement provided in the scope is simple and straightforward, the foll
 |login|nvarchar(255) | NO|
 |name|nvarchar(255) | NO|
 |salary|double | NO|
+
+## Static Web (Incomplete) 
+Executing: 
+```
+npm i -g serve
+serve
+```
+
+![Screen Capture of static web page](https://github.com/jinpeiw/techhunt2020_employees/Screen_Capture.jpg?raw=true)
+

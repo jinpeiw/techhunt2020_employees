@@ -1,0 +1,15 @@
+{
+  "name": "employees-dashboard",
+  "version": "0.0.1",
+  "description": "",
+  "main": "apicall.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss": "node-sass --watch scss -o css"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "sass": "^1.26.8"
+  }
+}
